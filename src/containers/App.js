@@ -3,6 +3,8 @@ import "./App.css";
 import { StyleRoot } from "radium";
 import Persons from "../components/Persons/Persons";
 import Cockpit from "../components/Cockpit/Cockpit";
+import Aux from "../hoc/Aux";
+import withClass from "../hoc/withClass";
 
 class App extends PureComponent {
   constructor(props) {
@@ -99,7 +101,7 @@ class App extends PureComponent {
 
     return (
       <StyleRoot>
-        <div className="App">
+        {/* <WithClassOld classes={"App"}>
           <button
             onClick={() => {
               this.setState({ showPersons: true });
@@ -114,7 +116,23 @@ class App extends PureComponent {
             click={this.tooglePersonsHandler}
           />
           {persons}
-        </div>
+        </WithClassOld> */}
+        <Aux>
+          <button
+            onClick={() => {
+              this.setState({ showPersons: true });
+            }}
+          >
+            Show Persons
+          </button>
+          <Cockpit
+            appTitle={this.props.title}
+            showPersons={this.state.showPersons}
+            numberOfPersons={this.state.persons.length}
+            click={this.tooglePersonsHandler}
+          />
+          {persons}
+        </Aux>
       </StyleRoot>
     );
     // return React.createElement(
@@ -125,4 +143,4 @@ class App extends PureComponent {
   }
 }
 
-export default App;
+export default withClass(App, "App");

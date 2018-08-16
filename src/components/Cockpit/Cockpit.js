@@ -32,13 +32,13 @@ const cockpit = props => {
   }
 
   return (
-    <div>
+    <React.Fragment>
       <h1>{props.appTitle}</h1>
       <p className={classes.join(" ")}>It is actually working</p>
       <button style={style} onClick={props.click}>
         Toogle Persons
       </button>
-    </div>
+    </React.Fragment>
   );
 };
 
